@@ -1,0 +1,363 @@
+/* Selector universal */
+*{
+    margin: 0%; /*Elimina todo margen que trae por defecto*/
+    padding: 0%; /*Elimina todo relleno que trae por defecto*/   
+    box-sizing: border-box;
+}
+
+.index-background{
+	background-image: linear-gradient(80deg, rgb(5, 124, 172), rgb(199, 10, 114));
+	overflow: hidden;
+}
+
+#up{
+	position: absolute;
+	height: 800px;
+	width: 800px;
+	border-radius: 50%;
+	background-image: linear-gradient(80deg, rgb(5, 124, 172), rgb(43, 247, 202, 0.5));
+	filter: blur(80px);
+	animation: down 40s infinite;
+}
+
+@keyframes down {
+	0%, 100%{
+		top:-100px;
+	}	
+	70%{
+		top:700px;
+	}
+}
+#down{
+	position: absolute;
+	right: 0;
+	height: 500px;
+	width: 500px;
+	border-radius: 50%;
+	background-image: linear-gradient(80deg, rgb(245, 207, 82, 0.8), rgb(199, 10, 114));
+	filter: blur(80px);
+	animation: up 30s infinite;
+}
+
+@keyframes up {
+	0%, 100%{
+		bottom:-100px;
+	}	
+	70%{
+		bottom:700px;
+	}
+}
+
+#left{
+	position: absolute;
+	height: 500px;
+	width: 500px;
+	border-radius: 50%;
+	background-image: linear-gradient(80deg, rgb(5, 124, 82, 172), rgb(183, 253, 52,0.8));
+	filter: blur(80px);
+	animation: left 30s 1s infinite;
+}
+
+@keyframes left {
+	0%, 100%{
+		left:-100px;
+	}	
+	70%{
+		left:1300px;
+	}
+}
+
+#right{
+	position: absolute;
+	height: 500px;
+	width: 500px;
+	border-radius: 50%;
+	background-image: linear-gradient(80deg, rgb(26, 248, 18, 0.6), rgb(199, 10, 52, 0.8));
+	filter: blur(80px);
+	animation: right 40s .5s infinite;
+}
+
+@keyframes right {
+	0%, 100%{
+		right:-100px;
+	}	
+	70%{
+		right:1300px;
+	}
+}
+
+/* ---- ----- ----- NETFLIX ----- ----- ----- */
+
+/* ---- ----- ----- Contenedor Titulo y Controles ----- ----- ----- */
+.contenedor-titulo-controles {
+	display: flex;
+	justify-content: space-between;
+	align-items: end;
+}
+
+/*  ---- ----- ----- Contenedor principal y flechas  ---- ----- ----- */
+
+/* Agrega flechas a los costados alineadas con las imagenes en el centro */
+	.peliculas-recomendadas{ 
+		display: flex;
+		align-items: center;
+		position: relative;
+	}
+
+/* Dar formato a las flechas de izquierda y derecha*/
+.peliculas-recomendadas .contenedor-principal .flecha-izquierda,
+.peliculas-recomendadas .contenedor-principal .flecha-derecha {
+	position: absolute;
+	border: none;
+	background: rgba(0,0,0,0.3);
+	font-size: 40px;
+	height: 50%;
+	top: calc(50% - 25%);
+	line-height: 40px;
+	width: 50px;
+	color: #fff;
+	cursor: pointer;
+	z-index: 500;
+	transition: .2s ease all;
+}
+
+/* Indicar el color de fondo de las flechas cuando se pase el cursor por arriba */
+.peliculas-recomendadas .contenedor-principal .flecha-izquierda:hover,
+.peliculas-recomendadas .contenedor-principal .flecha-derecha:hover {
+	background: #DC1721; /* El color de Netflix */
+}
+
+/* Indicar la posición de la flecha derecha respecto a los márgenes */
+.peliculas-recomendadas .contenedor-principal .flecha-derecha {
+	right: 0;
+}
+
+/* ---- ----- ----- Carousel ----- ----- ----- */
+.peliculas-recomendadas .contenedor-carousel {
+	width: 100%;
+	padding: 20px 0;
+	overflow: hidden;
+	scroll-behavior: smooth;
+}
+
+.peliculas-recomendadas .contenedor-carousel .carousel {
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+.peliculas-recomendadas .contenedor-carousel .carousel .pelicula {
+	min-width: 20%;
+	transition: .3s ease all;
+	box-shadow: 5px 5px 10px rgba(0,0,0, .3);
+}
+
+.peliculas-recomendadas .contenedor-carousel .carousel .pelicula.hover {
+	transform: scale(1.2);
+	transform-origin: center;
+}
+
+.peliculas-recomendadas .contenedor-carousel .carousel .pelicula img {
+	width: 100%;
+	vertical-align: top;
+}
+
+/* ---- ----- ----- Media Queries ----- ----- ----- */
+	@media screen and (max-width: 800px) {
+		.peliculas-recomendadas .contenedor-carousel {
+			overflow: visible;
+		}
+
+		.peliculas-recomendadas .contenedor-carousel .carousel {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 20px;
+		}
+
+		.peliculas-recomendadas .indicadores,
+		.peliculas-recomendadas .flecha-izquierda,
+		.peliculas-recomendadas .flecha-derecha {
+			display: none;
+		}
+	}
+
+/* Formato del Body para que tenga el fondo de Netflix*/
+.netflix-background {
+	background: linear-gradient(230.93deg, #DC1721 -8%, rgba(68, 18, 77, 0.5) 40%, rgba(5, 0, 0, 0) 80%), #000000;
+    color: #ffffff;
+  }
+
+/* Quitar viñetas y agregar padding a las listas de películas */
+.lista-peliculas{
+	padding-left: 2vw;
+	list-style-type: none;
+}
+
+/* Agregar padding a los encabezados del menú de navegación */
+nav a img{
+	padding-left: 1vw;
+	width: 60px; 
+    height: 40px; 
+    border-color: black ;
+	backdrop-filter: blur(5px);
+}
+
+/* Agrega margen alrededor del contenido */
+.contenido {
+	margin: 2vw; 
+	color: #ffffff;
+	backdrop-filter: blur(5px);
+  }
+  
+/* Estilo para los elementos de la lista */
+.lista-peliculas li {
+	padding-top: 0.7vh;
+  }
+
+main h1{
+	padding-bottom: none;
+}
+
+/* Aplicar padding a los títulos */
+section h1{
+	padding-top: 1vh;
+	padding-bottom: 2vh;
+	}
+
+/* Agregar padding a las tablas */
+.tabla{
+	padding-top: 2vh;
+	padding-bottom: 2vh;
+}
+
+/* ---- ----- ----- AMAZON ----- ----- ----- */
+.amazon-pictures{
+	display: flex;
+	width: 1600px;
+	height: 400px;
+	margin: 2vw;
+}
+
+.amazon-pictures img{
+	width: 0px;
+	flex-grow: 1;
+	object-fit: cover;
+	opacity: .8;
+	transition: .5s ease;
+}
+
+.amazon-pictures img:hover{
+	cursor: crosshair;
+	width: 300px;
+	opacity: 1;
+	filter: contrast(120%);
+}
+/* Formato del Body para que tenga el fondo de Amazon*/
+.amazon-background{
+	background: linear-gradient(230.93deg,  #1a98ff -8%, #1b232d 40%, rgba(5, 0, 0, 0) 80%), #000000;
+    color: #ffffff;
+}
+
+/* ---- ----- ----- DISNEY ----- ----- ----- */
+.lineal {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; /* Alinea los elementos en la parte superior */
+	margin: 2vw; 
+}
+
+.content-all{
+	width: 200px;
+	margin: auto;
+	perspective: 700px;
+	position: relative;
+	margin-bottom: 500px;
+}
+
+.content-carousel{
+	width: 100%;
+	position: absolute;
+	animation: rotar 15s infinite linear;
+	transform-style: preserve-3d;
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 20px;
+}
+
+@keyframes rotar {
+	from{
+		transform: rotateY(0deg);
+	}to{
+		transform: rotateY(360deg);
+	}
+
+}
+.content-carousel:hover{
+	animation-play-state: paused;
+}
+
+.content-carousel figure{
+	width: 100%;
+	height: 250px;
+	overflow: hidden;
+	position: absolute;
+	cursor: pointer;
+}
+
+.content-carousel figure:nth-child(1){transform: rotateY(0deg) translateZ(300px);}
+.content-carousel figure:nth-child(2){transform: rotateY(36deg) translateZ(300px);}
+.content-carousel figure:nth-child(3){transform: rotateY(72deg) translateZ(300px);}
+.content-carousel figure:nth-child(4){transform: rotateY(108deg) translateZ(300px);}
+.content-carousel figure:nth-child(5){transform: rotateY(144deg) translateZ(300px);}
+.content-carousel figure:nth-child(6){transform: rotateY(180deg) translateZ(300px);}
+.content-carousel figure:nth-child(7){transform: rotateY(216deg) translateZ(300px);}
+.content-carousel figure:nth-child(8){transform: rotateY(252deg) translateZ(300px);}
+.content-carousel figure:nth-child(9){transform: rotateY(288deg) translateZ(300px);}
+.content-carousel figure:nth-child(10){transform: rotateY(324deg) translateZ(300px);}
+
+.content-carousel img{
+	width: 100%;
+	transition: all 300ms;
+}
+
+.content-carousel img:hover{
+	transform: scale(1.2);
+	transition: all 300ms;
+}
+
+/* Formato del Body para que tenga el fondo de Disney*/
+.disney-background{
+	background: linear-gradient(230.93deg,#0051d5, #0418a2 40%, #020e40 80%), #000000;
+    color: #ffffff;
+}
+/* 0051d5 */
+
+/* ---- ----- ----- HBO MAX ----- ----- ----- */
+
+.swiper-wrapper{
+	position: relative;
+}
+.swiper-slide{
+	width: 200px;
+	height: 400px;
+	box-shadow: 0 0 20px rgba(0,0,0, .4);
+}
+
+.product-content{
+	display: flex;
+	justify-content: center;
+}
+
+.product-img img{
+	width: 300px;
+	height: 400px;
+}
+
+/* Formato del Body para que tenga el fondo de HBO MAX*/
+.hbomax-background{
+	background: linear-gradient(230.93deg,  #0a0438 -8%, #310094 40%, #511E8A 80%), #000000;
+    color: #ffffff;
+}
+
+.hbo-padding{
+	padding-left: 2vw;
+}
